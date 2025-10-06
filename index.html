@@ -471,14 +471,6 @@
   }
   </script>
 <script>
-function showResult(finalResult) {
-  const resultBox = document.getElementById('resultBox');
-  resultBox.innerText = "あなたの結果は：" + finalResult;
-
-  // 結果をスプレッドシートに送信
-  saveResultToSheet(userName, finalResult);
-}
-
 function saveResultToSheet(userName, finalResult) {
   const url = 'https://script.google.com/a/macros/en-courage.net/s/AKfycbzXO8eINPNtf4MWJ0WU99k_7JmcMdDDgVDaaC3Ao-t2cuL53DImvFZW8YkqUPWwDLc8Og/exec';
   const payload = { name: userName, result: finalResult };
