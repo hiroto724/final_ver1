@@ -471,5 +471,29 @@
   insertCommonPoster('1HHf7KdlS8_-KcmJs8QRNfQbhC7PCSASp');
   }
   </script>
+<script>
+function showResult(finalResult) {
+  const resultBox = document.getElementById('resultBox');
+  resultBox.innerText = "あなたの結果は：" + finalResult;
+
+  // 結果をスプレッドシートに送信
+  saveResultToSheet(userName, finalResult);
+}
+
+function saveResultToSheet(userName, finalResult) {
+  const url = 'https://script.google.com/macros/s/xxxxxxxxx/exec';
+  const payload = { name: userName, result: finalResult };
+
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(res => console.log('送信完了:', res))
+  .catch(err => console.error('エラー:', err));
+}
+</script>
+
+
 </body>
 </html>
