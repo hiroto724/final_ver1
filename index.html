@@ -223,11 +223,10 @@
           // ↓↓↓ C-ロ以外の条件付き追加出力ここから ↓↓↓
     if (C !== "C-ロ") insertExtraContent(userName, A, B, C);
   
-  // GASへ保存
-  google.script.run
-    .withSuccessHandler(() => console.log("保存完了"))
-    .withFailureHandler(e => console.error("保存失敗:", e.message))
-    .saveResponse(userName, A, B, C);
+  // --- 結果をスプレッドシートに送信 ---
+  const finalResult = `${A} × ${B} × ${C}`;
+  saveResultToSheet(userName, finalResult);
+
   }
   
   function insertExtraContent(userName, A, B, C) {
@@ -481,7 +480,7 @@ function showResult(finalResult) {
 }
 
 function saveResultToSheet(userName, finalResult) {
-  const url = 'https://script.google.com/macros/s/xxxxxxxxx/exec';
+  const url = 'https://script.google.com/a/macros/en-courage.net/s/AKfycbzXO8eINPNtf4MWJ0WU99k_7JmcMdDDgVDaaC3Ao-t2cuL53DImvFZW8YkqUPWwDLc8Og/exec';
   const payload = { name: userName, result: finalResult };
 
   fetch(url, {
